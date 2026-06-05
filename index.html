@@ -29,12 +29,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .sync-banner.ok{background:var(--green-bg,#0e1f0f);border:1px solid #2d5a2d;color:var(--green)}
 .sync-banner.error{background:var(--red-bg);border:1px solid #3a1515;color:var(--red)}
 /* SETUP BANNER */
-.setup-banner{margin:1rem;padding:1rem;background:#1a1a2e;border:1px solid #2d2d5a;border-radius:12px}
-.setup-banner h3{font-size:14px;font-weight:700;color:#7f9cf5;margin-bottom:.5rem}
-.setup-banner p{font-size:12px;color:#888;line-height:1.6;margin-bottom:.75rem}
-.setup-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:.55rem .75rem;font-family:var(--mono);font-size:12px;color:var(--text);outline:none;margin-bottom:.5rem}
-.setup-input:focus{border-color:#7f9cf5}
-.setup-btn{width:100%;padding:.6rem;border-radius:8px;background:#7f9cf5;color:#0f0f0f;border:none;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer}
+
 /* STATS */
 .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)}
 .stat-cell{background:var(--bg);padding:.75rem 1rem;text-align:center}
@@ -179,39 +174,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
   <span>Conectando con Google Sheets…</span>
 </div>
 
-<!-- SETUP (si no hay URL configurada) -->
-<div class="screen" id="screen-setup">
-  <div class="header">
-    <div class="logo">Stock<span>/</span>Kitchen</div>
-  </div>
-  <div class="setup-banner">
-    <h3>⚙ Configuración inicial</h3>
-    <p>Para sincronizar datos entre dispositivos necesitas conectar la app con Google Sheets. Sigue estos pasos:</p>
-    <p>1. Abre <strong>script.google.com</strong> e inicia sesión con tu cuenta de Google<br>
-    2. Crea un nuevo proyecto y pega el archivo <strong>Code.gs</strong> que te hemos dado<br>
-    3. Haz clic en <strong>Implementar → Nueva implementación</strong><br>
-    4. Tipo: "Aplicación web" · Acceso: "Cualquier usuario"<br>
-    5. Copia la URL que aparece y pégala aquí abajo</p>
-    <input class="setup-input" id="setup-url" placeholder="https://script.google.com/macros/s/…/exec" type="url">
-    <button class="setup-btn" onclick="saveSetupUrl()">Conectar y guardar</button>
-  </div>
-</div>
-
-<!-- MAIN -->
-<div class="screen" id="s-main">
-  <div class="header">
-    <div class="logo">Stock<span>/</span>Kitchen</div>
-    <div class="hright">
-      <div class="hdate" id="hdate"></div>
-      <div class="icon-btn" onclick="syncNow()" title="Sincronizar">↻</div>
-      <div class="icon-btn" onclick="show('s-admin')" style="color:var(--accent2)">⚙</div>
-    </div>
-  </div>
-  <div class="sync-banner syncing" id="sync-banner" style="display:none"></div>
-  <div class="stats-bar">
-    <div class="stat-cell"><div class="stat-num red" id="sc">0</div><div class="stat-lbl">Urgente</div></div>
-    <div class="stat-cell"><div class="stat-num amber" id="sl">0</div><div class="stat-lbl">Bajo</div></div>
-    <div class="stat-cell"><div class="stat-num green" id="sok">0</div><div class="stat-lbl">OK</div></div>
+<!-- MAIN --> class="stat-lbl">OK</div></div>
   </div>
   <div class="controls">
     <div class="search-wrap"><span class="si">⌕</span><input type="search" id="srch" placeholder="Buscar producto o proveedor…" oninput="renderList()"></div>
@@ -286,10 +249,8 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 <div class="toast" id="toast"></div>
 
 <script>
-// ════════════════════════════════════════════════════════════════════════════
-// CONFIGURACIÓN — pega aquí tu URL de Apps Script después de publicarla
-// ════════════════════════════════════════════════════════════════════════════
-let APPS_SCRIPT_URL = localStorage.getItem('sk_url') || '';
+// ── URL del backend (Google Apps Script) ──
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyo9BXibSrtMDTQ_k2UZrielboQbNIlu9SGswMBeaTLEFCIY57v6l9zp3r5QrS1AUrBkg/exec';
 
 // ════════════════════════════════════════════════════════════════════════════
 // DATOS POR DEFECTO (se usan solo la primera vez que se configura la hoja)
@@ -501,17 +462,6 @@ function scheduleStockSync() {
 // ════════════════════════════════════════════════════════════════════════════
 // SETUP
 // ════════════════════════════════════════════════════════════════════════════
-function saveSetupUrl() {
-  const url = document.getElementById('setup-url').value.trim();
-  if (!url || !url.includes('script.google.com')) {
-    toast('⚠ URL no válida'); return;
-  }
-  APPS_SCRIPT_URL = url;
-  localStorage.setItem('sk_url', url);
-  document.getElementById('loading-screen').style.display = 'flex';
-  document.getElementById('screen-setup').classList.remove('active');
-  loadAll();
-}
 
 // ════════════════════════════════════════════════════════════════════════════
 // APP INIT
@@ -783,13 +733,7 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 // BOOT
 // ════════════════════════════════════════════════════════════════════════════
 window.addEventListener('load', () => {
-  document.getElementById('loading-screen').style.display = 'none';
-  if (!APPS_SCRIPT_URL) {
-    show('screen-setup');
-  } else {
-    document.getElementById('loading-screen').style.display = 'flex';
-    loadAll();
-  }
+  loadAll();
 });
 </script>
 </body>
