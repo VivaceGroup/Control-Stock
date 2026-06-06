@@ -11,11 +11,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0f0f0f;--bg2:#181818;--bg3:#222;--bg4:#2a2a2a;--border:#2a2a2a;--border2:#333;--border3:#444;--text:#f0ede8;--text2:#888;--text3:#555;--red:#ff4d4d;--red-bg:#2a1010;--amber:#f5a623;--amber-bg:#271e0a;--green:#4caf50;--accent:#e8d5b0;--accent2:#c4a882;--blue:#7f9cf5;--blue-bg:#1a1a2e;--mono:'DM Mono',monospace;--sans:'Syne',sans-serif}
+:root{--bg:#0f0f0f;--bg2:#181818;--bg3:#222;--bg4:#2a2a2a;--border:#2a2a2a;--border2:#333;--border3:#444;--text:#f0ede8;--text2:#888;--text3:#555;--red:#ff4d4d;--red-bg:#2a1010;--amber:#f5a623;--amber-bg:#271e0a;--green:#4caf50;--green-bg:#0e1f0f;--accent:#e8d5b0;--accent2:#c4a882;--blue:#7f9cf5;--blue-bg:#1a1a2e;--mono:'DM Mono',monospace;--sans:'Syne',sans-serif}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overscroll-behavior:none}
 .screen{display:none;min-height:100vh}.screen.active{display:flex;flex-direction:column}
-/* HEADER */
 .header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:56px}
 .logo{font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .logo span{color:var(--text3);font-weight:400}
@@ -23,20 +22,15 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .hdate{font-family:var(--mono);font-size:11px;color:var(--text3)}
 .icon-btn{width:34px;height:34px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .icon-btn:active{background:var(--border2)}
-/* SYNC BANNER */
-.sync-banner{display:flex;align-items:center;gap:6px;padding:.4rem .75rem;margin:.4rem 1rem;border-radius:8px;font-family:var(--mono);font-size:11px;transition:all .3s}
+.sync-banner{display:flex;align-items:center;gap:6px;padding:.4rem .75rem;margin:.4rem 1rem;border-radius:8px;font-family:var(--mono);font-size:11px}
 .sync-banner.syncing{background:var(--amber-bg);border:1px solid #332910;color:var(--amber)}
-.sync-banner.ok{background:var(--green-bg,#0e1f0f);border:1px solid #2d5a2d;color:var(--green)}
+.sync-banner.ok{background:var(--green-bg);border:1px solid #2d5a2d;color:var(--green)}
 .sync-banner.error{background:var(--red-bg);border:1px solid #3a1515;color:var(--red)}
-/* SETUP BANNER */
-
-/* STATS */
 .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)}
 .stat-cell{background:var(--bg);padding:.75rem 1rem;text-align:center}
 .stat-num{font-family:var(--mono);font-size:24px;font-weight:500;line-height:1}
 .stat-num.red{color:var(--red)}.stat-num.amber{color:var(--amber)}.stat-num.green{color:var(--green)}
 .stat-lbl{font-size:10px;color:var(--text3);margin-top:3px;letter-spacing:.08em;text-transform:uppercase}
-/* CONTROLS */
 .controls{padding:.75rem 1rem .5rem;background:var(--bg)}
 .search-wrap{position:relative;margin-bottom:.5rem}
 .search-wrap input{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:.55rem .75rem .55rem 2.25rem;font-family:var(--mono);font-size:13px;color:var(--text);outline:none}
@@ -49,7 +43,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .chip{flex-shrink:0;padding:.26rem .75rem;border:1px solid var(--border2);border-radius:999px;font-family:var(--mono);font-size:11px;color:var(--text3);background:transparent;cursor:pointer;white-space:nowrap}
 .chip.ac{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:500}
 .chip.ap{background:var(--accent2);color:var(--bg);border-color:var(--accent2);font-weight:500}
-/* LIST */
 .list-wrap{flex:1;overflow-y:auto;padding:0 1rem 7rem}
 .cat-head{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);padding:1.25rem 0 .5rem;display:flex;align-items:center;gap:.5rem}
 .cat-head::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -73,11 +66,9 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .qi{width:58px;text-align:center;font-family:var(--mono);font-size:16px;font-weight:500;color:var(--accent);background:var(--bg3);border:1px solid var(--accent2);border-radius:6px;padding:4px 2px;outline:none}
 .sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:3px;align-self:flex-start}
 .sdot.red{background:var(--red);box-shadow:0 0 6px var(--red)}.sdot.amber{background:var(--amber);box-shadow:0 0 6px var(--amber)}.sdot.green{background:var(--green)}
-/* CTA */
 .cta-wrap{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem 1.25rem;background:linear-gradient(transparent,var(--bg) 35%)}
 .cta-btn{width:100%;padding:.85rem;background:var(--accent);color:var(--bg);border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:700;cursor:pointer}
 .cta-btn:active{transform:scale(.97);opacity:.9}
-/* ORDER */
 .oh,.ah{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;padding:0 1rem;height:56px}
 .bb{width:36px;height:36px;border-radius:50%;background:var(--bg2);border:1px solid var(--border2);color:var(--text);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .bb:active{background:var(--border2)}
@@ -109,7 +100,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .oiu{font-family:var(--mono);font-size:10px;color:var(--text3)}
 .empty{text-align:center;padding:3rem 1.5rem;color:var(--text3);font-family:var(--mono);font-size:13px}
 .empty-i{font-size:40px;margin-bottom:1rem}
-/* ADMIN */
 .admin-body{flex:1;overflow-y:auto;padding:.75rem 1rem 7rem}
 .add-btn{width:100%;padding:.7rem;background:transparent;border:1px dashed var(--border3);border-radius:10px;color:var(--accent2);font-family:var(--mono);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:1rem}
 .add-btn:active{background:var(--bg2)}
@@ -147,7 +137,6 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .asw input{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:.5rem .75rem .5rem 2.1rem;font-family:var(--mono);font-size:13px;color:var(--text);outline:none}
 .asw input::placeholder{color:var(--text3)}
 .asi{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:var(--text3);font-size:13px;pointer-events:none}
-/* MODALS */
 .mo{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.85);backdrop-filter:blur(4px);display:none;align-items:flex-end;padding:1rem}
 .mo.open{display:flex}
 .md{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:1.5rem;width:100%;max-height:88vh;overflow-y:auto}
@@ -157,11 +146,9 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 .mcancel{padding:.75rem;border-radius:10px;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-family:var(--sans);font-size:14px;cursor:pointer}
 .mok{padding:.75rem;border-radius:10px;background:var(--accent);border:none;color:var(--bg);font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer}
 .mok.danger{background:var(--red);color:white}
-/* TOAST */
 .toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg3);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:12px;padding:.6rem 1.2rem;border-radius:999px;opacity:0;transition:all .25s;white-space:nowrap;z-index:500;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-/* LOADING */
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:1rem;color:var(--text3);font-family:var(--mono);font-size:13px}
+.loading{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:var(--text3);font-family:var(--mono);font-size:13px;z-index:999}
 .spinner{width:32px;height:32px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
@@ -169,12 +156,26 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 <body>
 
 <!-- LOADING -->
-<div id="loading-screen" class="loading">
+<div id="ld" class="loading">
   <div class="spinner"></div>
   <span>Conectando con Google Sheets…</span>
 </div>
 
-<!-- MAIN --> class="stat-lbl">OK</div></div>
+<!-- MAIN -->
+<div class="screen" id="s-main">
+  <div class="header">
+    <div class="logo">Stock<span>/</span>Kitchen</div>
+    <div class="hright">
+      <div class="hdate" id="hdate"></div>
+      <div class="icon-btn" onclick="syncNow()" title="Sincronizar">↻</div>
+      <div class="icon-btn" onclick="goAdmin()" style="color:var(--accent2)">⚙</div>
+    </div>
+  </div>
+  <div class="sync-banner" id="sbanner" style="display:none"></div>
+  <div class="stats-bar">
+    <div class="stat-cell"><div class="stat-num red" id="sc">0</div><div class="stat-lbl">Urgente</div></div>
+    <div class="stat-cell"><div class="stat-num amber" id="sl">0</div><div class="stat-lbl">Bajo</div></div>
+    <div class="stat-cell"><div class="stat-num green" id="sok">0</div><div class="stat-lbl">OK</div></div>
   </div>
   <div class="controls">
     <div class="search-wrap"><span class="si">⌕</span><input type="search" id="srch" placeholder="Buscar producto o proveedor…" oninput="renderList()"></div>
@@ -182,13 +183,13 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
     <div class="fg"><div class="fl">Proveedor</div><div class="fs" id="fprov"></div></div>
   </div>
   <div class="list-wrap" id="plist"></div>
-  <div class="cta-wrap"><button class="cta-btn" onclick="show('s-order');renderOrder()">Ver pedido →</button></div>
+  <div class="cta-wrap"><button class="cta-btn" onclick="goOrder()">Ver pedido →</button></div>
 </div>
 
 <!-- ORDER -->
 <div class="screen" id="s-order">
   <div class="oh">
-    <button class="bb" onclick="show('s-main')">←</button>
+    <button class="bb" onclick="goMain()">←</button>
     <div class="ot">Pedido</div>
     <div class="ob" id="obadge">0</div>
   </div>
@@ -205,7 +206,7 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 <!-- ADMIN -->
 <div class="screen" id="s-admin">
   <div class="ah">
-    <button class="bb" onclick="show('s-main')">←</button>
+    <button class="bb" onclick="goMain()">←</button>
     <div class="at">Base de datos</div>
     <div class="icon-btn" onclick="openModal('m-new')" style="color:var(--accent)">＋</div>
   </div>
@@ -249,12 +250,10 @@ html,body{background:var(--bg);color:var(--text);font-family:var(--sans);min-hei
 <div class="toast" id="toast"></div>
 
 <script>
-// ── URL del backend (Google Apps Script) ──
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyo9BXibSrtMDTQ_k2UZrielboQbNIlu9SGswMBeaTLEFCIY57v6l9zp3r5QrS1AUrBkg/exec';
+// ── URL BACKEND ──────────────────────────────────────────────────────────────
+const API = 'https://script.google.com/macros/s/AKfycbyo9BXibSrtMDTQ_k2UZrielboQbNIlu9SGswMBeaTLEFCIY57v6l9zp3r5QrS1AUrBkg/exec';
 
-// ════════════════════════════════════════════════════════════════════════════
-// DATOS POR DEFECTO (se usan solo la primera vez que se configura la hoja)
-// ════════════════════════════════════════════════════════════════════════════
+// ── DATOS POR DEFECTO ────────────────────────────────────────────────────────
 const DEF = [
   {n:"Grana Padano Scaglie",c:"Italiano",p:"Apoza",min:2,price:8.45,isKg:false},
   {n:"Mascarpone",c:"Italiano",p:"Apoza",min:2,price:4.15,isKg:false},
@@ -353,52 +352,36 @@ const DEF = [
   {n:"Bolsas Vacío",c:"Packaging",p:"Makro",min:10,price:0.0595,isKg:false},
 ];
 
-// ════════════════════════════════════════════════════════════════════════════
-// ESTADO
-// ════════════════════════════════════════════════════════════════════════════
+// ── ESTADO ───────────────────────────────────────────────────────────────────
 let P = [];
 const ST = {};
 let aC = 'Todos', aP = 'Todos';
 let delIdx = null;
 let syncTimer = null;
-let pendingSync = {};   // cambios pendientes de enviar
 
-// ════════════════════════════════════════════════════════════════════════════
-// UTILS
-// ════════════════════════════════════════════════════════════════════════════
+// ── UTILS ────────────────────────────────────────────────────────────────────
 const STEP = 0.1;
 const fv = v => { const r = parseFloat(v.toFixed(1)); return Number.isInteger(r) ? String(r) : r.toFixed(1); };
 const rn = x => { if (x <= 0) return 0; const r = Math.round(x); return r < 1 ? 1 : r; };
-const eur = n => n.toLocaleString('es-ES', {minimumFractionDigits:2,maximumFractionDigits:2}) + ' €';
+const eur = n => n.toLocaleString('es-ES', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';
 const gs = (p, v) => v < p.min ? 'cr' : v < p.min * 1.3 ? 'lw' : 'ok';
 const mth = kg => kg ? '<span class="mt kg">⚖ kilogramos</span>' : '<span class="mt ud"># unidades</span>';
-const cats = () => ['Todos', ...[...new Set(P.map(p=>p.c))]];
-const provs = () => ['Todos', ...[...new Set(P.map(p=>p.p))].sort()];
+const uniqCats = () => ['Todos', ...[...new Set(P.map(p => p.c))]];
+const uniqProvs = () => ['Todos', ...[...new Set(P.map(p => p.p))].sort()];
 
-// ════════════════════════════════════════════════════════════════════════════
-// API — Google Apps Script
-// ════════════════════════════════════════════════════════════════════════════
-async function apiGet(params = '') {
-  const url = APPS_SCRIPT_URL + (params ? '?' + params : '');
-  const r = await fetch(url, { redirect: 'follow' });
+// ── API ──────────────────────────────────────────────────────────────────────
+async function apiGet(params) {
+  const r = await fetch(API + '?' + params, { redirect: 'follow' });
   return r.json();
 }
-
 async function apiPost(body) {
-  const r = await fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify(body),
-    headers: { 'Content-Type': 'text/plain' }, // Apps Script CORS requiere text/plain
-    redirect: 'follow',
-  });
+  const r = await fetch(API, { method: 'POST', body: JSON.stringify(body), headers: {'Content-Type':'text/plain'}, redirect: 'follow' });
   return r.json();
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// SYNC
-// ════════════════════════════════════════════════════════════════════════════
-function setSyncBanner(state, msg) {
-  const b = document.getElementById('sync-banner');
+// ── SYNC BANNER ──────────────────────────────────────────────────────────────
+function banner(state, msg) {
+  const b = document.getElementById('sbanner');
   if (!msg) { b.style.display = 'none'; return; }
   b.style.display = 'flex';
   b.className = 'sync-banner ' + state;
@@ -406,36 +389,46 @@ function setSyncBanner(state, msg) {
   if (state === 'ok') setTimeout(() => { b.style.display = 'none'; }, 3000);
 }
 
-async function loadAll() {
-  if (!APPS_SCRIPT_URL) return;
-  setSyncBanner('syncing', '⟳ Cargando datos de Google Sheets…');
+// ── BOOT ─────────────────────────────────────────────────────────────────────
+async function boot() {
   try {
     const data = await apiGet('action=all');
     if (data.error) throw new Error(data.error);
-
     if (data.empty) {
-      // Primera vez: subir datos por defecto
       P = DEF.map(p => ({...p}));
       await apiPost({ action: 'save_products', products: P });
       P.forEach((p, i) => { ST[i] = p.min; });
-      await apiPost({ action: 'save_stock', stock: ST });
+      await apiPost({ action: 'save_stock', stock: {...ST} });
     } else {
       P = data.products;
-      P.forEach((p, i) => { ST[i] = data.stock[String(i)] !== undefined ? parseFloat(data.stock[String(i)]) : p.min; });
+      P.forEach((p, i) => {
+        ST[i] = data.stock[String(i)] !== undefined ? parseFloat(data.stock[String(i)]) : p.min;
+      });
     }
-    setSyncBanner('ok', '✓ Sincronizado');
-    initApp();
+    banner('ok', '✓ Conectado');
   } catch (e) {
-    setSyncBanner('error', '✗ Error de conexión — trabajando sin conexión');
-    // Fallback: usar datos por defecto
+    // Sin conexión: cargar datos por defecto
     P = DEF.map(p => ({...p}));
     P.forEach((p, i) => { ST[i] = p.min; });
-    initApp();
+    banner('error', '✗ Sin conexión — modo local');
   }
+  // Ocultar loading y mostrar app
+  document.getElementById('ld').style.display = 'none';
+  initApp();
 }
 
+function initApp() {
+  document.getElementById('hdate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'short', day:'numeric', month:'short'}).toUpperCase();
+  initFilters();
+  renderList();
+  goMain();
+  // Auto-sync cada 60s
+  setInterval(syncNow, 60000);
+}
+
+// ── SYNC NOW ─────────────────────────────────────────────────────────────────
 async function syncNow() {
-  setSyncBanner('syncing', '⟳ Sincronizando…');
+  banner('syncing', '⟳ Sincronizando…');
   try {
     const data = await apiGet('action=stock');
     if (data.stock) {
@@ -443,15 +436,14 @@ async function syncNow() {
       renderList();
       updateStats();
     }
-    setSyncBanner('ok', '✓ Sincronizado');
-    toast('↻ Stock actualizado');
+    banner('ok', '✓ Sincronizado');
+    showToast('↻ Stock actualizado');
   } catch (e) {
-    setSyncBanner('error', '✗ Sin conexión');
+    banner('error', '✗ Sin conexión');
   }
 }
 
-// Guardar stock con debounce de 1.5s para no saturar la API
-function scheduleStockSync() {
+function scheduleSync() {
   clearTimeout(syncTimer);
   syncTimer = setTimeout(async () => {
     try { await apiPost({ action: 'save_stock', stock: {...ST} }); }
@@ -459,37 +451,16 @@ function scheduleStockSync() {
   }, 1500);
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// SETUP
-// ════════════════════════════════════════════════════════════════════════════
-
-// ════════════════════════════════════════════════════════════════════════════
-// APP INIT
-// ════════════════════════════════════════════════════════════════════════════
-function initApp() {
-  document.getElementById('loading-screen').style.display = 'none';
-  document.getElementById('hdate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'short',day:'numeric',month:'short'}).toUpperCase();
-  initFilters();
-  renderList();
-  show('s-main');
-  // Auto-sync stock cada 60s
-  setInterval(syncNow, 60000);
-}
-
-// ════════════════════════════════════════════════════════════════════════════
-// STATS
-// ════════════════════════════════════════════════════════════════════════════
+// ── STATS ────────────────────────────────────────────────────────────────────
 function updateStats() {
   let c=0,l=0,ok=0;
   P.forEach((p,i) => { const s=gs(p,ST[i]??p.min); s==='cr'?c++:s==='lw'?l++:ok++; });
-  document.getElementById('sc').textContent=c;
-  document.getElementById('sl').textContent=l;
-  document.getElementById('sok').textContent=ok;
+  document.getElementById('sc').textContent = c;
+  document.getElementById('sl').textContent = l;
+  document.getElementById('sok').textContent = ok;
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// HOLD TO REPEAT
-// ════════════════════════════════════════════════════════════════════════════
+// ── HOLD TO REPEAT ───────────────────────────────────────────────────────────
 function hold(btn, fn) {
   let t, iv;
   const s = () => { fn(); t = setTimeout(() => { iv = setInterval(fn, 70); }, 350); };
@@ -518,7 +489,7 @@ function tapEdit(row, i, el) {
       ST[i] = parseFloat(v.toFixed(1));
       const nd = document.createElement('div'); nd.className='qd'; nd.textContent=fv(ST[i]);
       inp.replaceWith(nd); tapEdit(row, i, nd); updRow(row, i);
-      scheduleStockSync();
+      scheduleSync();
     };
     inp.addEventListener('blur', done);
     inp.addEventListener('keydown', ev => { if (ev.key==='Enter') inp.blur(); });
@@ -527,9 +498,7 @@ function tapEdit(row, i, el) {
   el.addEventListener('touchend', ev => { ev.preventDefault(); doEdit(); });
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// FILTERS
-// ════════════════════════════════════════════════════════════════════════════
+// ── FILTERS ──────────────────────────────────────────────────────────────────
 function buildChips(id, items, getA, setA, cls) {
   const fr = document.getElementById(id); fr.innerHTML = '';
   items.forEach(v => {
@@ -540,13 +509,11 @@ function buildChips(id, items, getA, setA, cls) {
   });
 }
 function initFilters() {
-  buildChips('fcat', cats(), ()=>aC, v=>{aC=v;}, 'ac');
-  buildChips('fprov', provs(), ()=>aP, v=>{aP=v;}, 'ap');
+  buildChips('fcat', uniqCats(), ()=>aC, v=>{aC=v;}, 'ac');
+  buildChips('fprov', uniqProvs(), ()=>aP, v=>{aP=v;}, 'ap');
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// RENDER LIST
-// ════════════════════════════════════════════════════════════════════════════
+// ── RENDER LIST ──────────────────────────────────────────────────────────────
 function renderList() {
   const q = (document.getElementById('srch').value||'').toLowerCase();
   const list = document.getElementById('plist'); list.innerHTML = '';
@@ -561,27 +528,24 @@ function renderList() {
     const row = document.createElement('div'); row.className='prow '+(s==='cr'?'cr':s==='lw'?'lw':'');
     const dot = document.createElement('div'); dot.className='sdot '+(s==='cr'?'red':s==='lw'?'amber':'green');
     const info = document.createElement('div'); info.className='pi';
-    info.innerHTML = `<div class="pn">${p.n}</div>${mth(p.isKg)}<div class="ps"><span class="pt">${p.p}</span><span class="pp">${eur(p.price)}/ud</span><span>mín: ${fv(p.min)}</span></div>`;
+    info.innerHTML=`<div class="pn">${p.n}</div>${mth(p.isKg)}<div class="ps"><span class="pt">${p.p}</span><span class="pp">${eur(p.price)}/ud</span><span>mín: ${fv(p.min)}</span></div>`;
     const ctrl = document.createElement('div'); ctrl.className='qc';
     const bm = document.createElement('button'); bm.className='qb'; bm.textContent='−';
     const dsp = document.createElement('div'); dsp.className='qd'; dsp.textContent=fv(val);
     const bp = document.createElement('button'); bp.className='qb'; bp.textContent='+';
     ctrl.append(bm, dsp, bp); row.append(dot, info, ctrl); list.appendChild(row);
     tapEdit(row, i, dsp);
-    hold(bm, () => { ST[i]=Math.max(0,parseFloat((( ST[i]??p.min)-STEP).toFixed(1))); updRow(row,i); scheduleStockSync(); });
-    hold(bp, () => { ST[i]=parseFloat(((ST[i]??p.min)+STEP).toFixed(1)); updRow(row,i); scheduleStockSync(); });
+    hold(bm, () => { ST[i]=Math.max(0,parseFloat(((ST[i]??p.min)-STEP).toFixed(1))); updRow(row,i); scheduleSync(); });
+    hold(bp, () => { ST[i]=parseFloat(((ST[i]??p.min)+STEP).toFixed(1)); updRow(row,i); scheduleSync(); });
   });
   updateStats();
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// ORDER
-// ════════════════════════════════════════════════════════════════════════════
+// ── ORDER ────────────────────────────────────────────────────────────────────
 function buildOrder() {
   const by={}; let ti=0, tc=0;
   P.forEach((p,i) => {
-    const raw = parseFloat((p.min-(ST[i]??p.min)).toFixed(1));
-    if (raw<=0) return;
+    const raw = parseFloat((p.min-(ST[i]??p.min)).toFixed(1)); if (raw<=0) return;
     const need = p.isKg ? raw : rn(raw); if (need<=0) return;
     if (!by[p.p]) by[p.p]={items:[],sub:0};
     const lc = parseFloat((p.price*need).toFixed(2));
@@ -622,13 +586,11 @@ function copyOrder() {
   });
   lines.push(`TOTAL ESTIMADO: ${eur(tc)}`);
   const t=lines.join('\n');
-  if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>toast('✓ Pedido copiado'));
-  else{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('✓ Pedido copiado');}
+  if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>showToast('✓ Pedido copiado'));
+  else{const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast('✓ Pedido copiado');}
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// ADMIN
-// ════════════════════════════════════════════════════════════════════════════
+// ── ADMIN ────────────────────────────────────────────────────────────────────
 function renderAdmin() {
   const q=(document.getElementById('asrch').value||'').toLowerCase();
   const list=document.getElementById('alist'); list.innerHTML='';
@@ -663,14 +625,14 @@ function renderAdmin() {
       wrap.classList.remove('open');
       top.querySelector('.arn').textContent=P[i].n;
       top.querySelector('.arm').textContent=`${P[i].p} · ${eur(P[i].price)}`;
-      try { await apiPost({action:'save_products',products:P}); toast('✓ Guardado y sincronizado'); }
-      catch(e){ toast('✓ Guardado (sin conexión)'); }
+      try { await apiPost({action:'save_products',products:P}); showToast('✓ Guardado y sincronizado'); }
+      catch(e){ showToast('✓ Guardado (sin conexión)'); }
       initFilters();
     });
     form.querySelector('.bdel').addEventListener('click',()=>{
-      delIdx=i;document.getElementById('mdelmsg').textContent=`¿Eliminar "${P[i].n}"?`;openModal('m-del');
+      delIdx=i; document.getElementById('mdelmsg').textContent=`¿Eliminar "${P[i].n}"?`; openModal('m-del');
     });
-    wrap.append(top,form);list.appendChild(wrap);
+    wrap.append(top,form); list.appendChild(wrap);
   });
 }
 
@@ -679,62 +641,54 @@ async function confirmDel() {
   P.splice(delIdx,1);
   Object.keys(ST).forEach(k=>delete ST[k]);
   P.forEach((p,i)=>{ST[i]=p.min;});
-  closeModal('m-del');renderAdmin();initFilters();
-  try { await apiPost({action:'save_products',products:P}); await apiPost({action:'save_stock',stock:ST}); toast('🗑 Eliminado y sincronizado'); }
-  catch(e){ toast('🗑 Eliminado (sin conexión)'); }
+  closeModal('m-del'); renderAdmin(); initFilters();
+  try { await apiPost({action:'save_products',products:P}); await apiPost({action:'save_stock',stock:{...ST}}); showToast('🗑 Eliminado y sincronizado'); }
+  catch(e){ showToast('🗑 Eliminado'); }
   delIdx=null;
 }
 
 async function saveNew() {
   const name=document.getElementById('nn').value.trim();
-  if(!name){toast('⚠ El nombre es obligatorio');return;}
+  if(!name){showToast('⚠ El nombre es obligatorio');return;}
   const cs=document.getElementById('nc').value;
   P.push({n:name,c:cs==='__new__'?'Nueva':cs,p:document.getElementById('np').value.trim()||'Makro',price:parseFloat(document.getElementById('npr').value)||0,min:parseFloat(document.getElementById('nm').value)||1,isKg:document.getElementById('nkg').checked});
   ST[P.length-1]=P[P.length-1].min;
-  closeModal('m-new');renderAdmin();initFilters();
-  try { await apiPost({action:'save_products',products:P}); toast('✓ Añadido y sincronizado'); }
-  catch(e){ toast('✓ Añadido (sin conexión)'); }
+  closeModal('m-new'); renderAdmin(); initFilters();
+  try { await apiPost({action:'save_products',products:P}); showToast('✓ Añadido y sincronizado'); }
+  catch(e){ showToast('✓ Añadido'); }
 }
 
 async function resetAll() {
   P.forEach((p,i)=>{ST[i]=p.min;});
-  closeModal('m-reset');renderList();
-  try { await apiPost({action:'save_stock',stock:{...ST}}); toast('↺ Reiniciado y sincronizado'); }
-  catch(e){ toast('↺ Reiniciado (sin conexión)'); }
+  closeModal('m-reset'); renderList();
+  try { await apiPost({action:'save_stock',stock:{...ST}}); showToast('↺ Reiniciado y sincronizado'); }
+  catch(e){ showToast('↺ Reiniciado'); }
 }
 
-// ════════════════════════════════════════════════════════════════════════════
-// NAV & MODALS
-// ════════════════════════════════════════════════════════════════════════════
-function show(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0);
-  if(id==='s-admin')renderAdmin();
-}
+// ── NAV ──────────────────────────────────────────────────────────────────────
+function showScreen(id){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
+function goMain(){ showScreen('s-main'); }
+function goOrder(){ renderOrder(); showScreen('s-order'); }
+function goAdmin(){ renderAdmin(); showScreen('s-admin'); }
+
+// ── MODALS ───────────────────────────────────────────────────────────────────
 function openModal(id){
   if(id==='m-new'){
-    const sel=document.getElementById('nc');sel.innerHTML='';
+    const sel=document.getElementById('nc'); sel.innerHTML='';
     [...new Set(P.map(p=>p.c))].forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
     ['nn','np','npr','nm'].forEach(x=>document.getElementById(x).value='');
     document.getElementById('nkg').checked=false;
   }
   document.getElementById(id).classList.add('open');
 }
-function closeModal(id){document.getElementById(id).classList.remove('open');}
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 
-// ════════════════════════════════════════════════════════════════════════════
-// TOAST
-// ════════════════════════════════════════════════════════════════════════════
+// ── TOAST ────────────────────────────────────────────────────────────────────
 let toastTimer=null;
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200);}
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2200); }
 
-// ════════════════════════════════════════════════════════════════════════════
-// BOOT
-// ════════════════════════════════════════════════════════════════════════════
-window.addEventListener('load', () => {
-  loadAll();
-});
+// ── INICIO ───────────────────────────────────────────────────────────────────
+boot();
 </script>
 </body>
 </html>
